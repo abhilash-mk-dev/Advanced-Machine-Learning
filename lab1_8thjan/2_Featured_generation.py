@@ -10,7 +10,7 @@ plot_2d_data(X,y,title="XOR data")
 
 #Here we are traning a linear model on non linear data
 #dispite this is againts general inuation, we are doiong this to demonstrate accuracy variation 
-#before and after applying trasformations to reduce the dimensions
+#before and after applying trasformations to Increase the dimensions
 
 model = LogisticRegression()
 model.fit(X,y)

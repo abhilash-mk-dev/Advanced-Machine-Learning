@@ -4,6 +4,10 @@ from visual import plot_2d_data
 from sklearn.metrics import accuracy_score
 from sklearn.svm import SVC as svm
 
+
+# KERNEL - this is a trick, which works in such a way that the actaul cordinates of the new dinemsions are not calculated, 
+# just the required products are comuted without the mapping 
+
 def main():
     X, y = gen_non_linear_data(n=200)
     plot_2d_data(X, y, title="XOR data")
