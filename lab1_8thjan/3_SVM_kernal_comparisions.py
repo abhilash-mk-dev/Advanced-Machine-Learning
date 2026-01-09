@@ -37,5 +37,42 @@ def main():
     print(f"Accuracy RBF SVM - XOR: {rdf_accuracy}")
     plot_2d_data(X, rdf_y_pred, title="XOR RBF SVM prediction")
 
+    sigmoid_svm = svm(kernel='sigmoid', gamma='scale')
+    # uses a tanh activation similar to a shallow neural network
+    # introduces non-linearity but is harder to tune and less stable than RBF
+    sigmoid_svm.fit(X, y)
+    sigmoid_y_pred = sigmoid_svm.predict(X)
+    sigmoid_accuracy = accuracy_score(y, sigmoid_y_pred)
+    print(f"Accuracy Sigmoid SVM - XOR: {sigmoid_accuracy}")
+    plot_2d_data(X, sigmoid_y_pred, title="XOR Sigmoid SVM prediction")
+
+    from sklearn.metrics.pairwise import laplacian_kernel
+
+    K_lap = laplacian_kernel(X, gamma=0.5)
+
+    laplacian_svm = svm(kernel='precomputed')
+    # similar to RBF but uses L1 distance instead of L2
+    # more robust to outliers and sharp feature differences
+    laplacian_svm.fit(K_lap, y)
+    laplacian_y_pred = laplacian_svm.predict(K_lap)
+    laplacian_accuracy = accuracy_score(y, laplacian_y_pred)
+    print(f"Accuracy Laplacian SVM - XOR: {laplacian_accuracy}")
+    plot_2d_data(X, laplacian_y_pred, title="XOR Laplacian SVM prediction")
+
+    from sklearn.metrics.pairwise import chi2_kernel
+
+    K_chi2 = chi2_kernel(X, gamma=0.5)
+
+    chi2_svm = svm(kernel='precomputed')
+    # measures similarity using chi-square distance
+    # works best with non-negative data like histograms or frequency features
+    chi2_svm.fit(K_chi2, y)
+    chi2_y_pred = chi2_svm.predict(K_chi2)
+    chi2_accuracy = accuracy_score(y, chi2_y_pred)
+    print(f"Accuracy Chi-Square SVM - XOR: {chi2_accuracy}")
+    plot_2d_data(X, chi2_y_pred, title="XOR Chi-Square SVM prediction")
+
+    
+
 if __name__ == "__main__":
     main()
