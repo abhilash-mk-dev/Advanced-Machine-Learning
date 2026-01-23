@@ -24,3 +24,20 @@ svm_soft.fit(X_overlap, y_overlap)
 
 print("Number of support vecotrs:", len(svm_soft.support_vectors_))
 plot_margin(X_overlap, y_overlap, svm_soft, title="Soft margin plot for overlapping data")
+
+# C = 10
+svm_soft_10 = SVC(kernel="linear", C=10)
+svm_soft_10.fit(X_overlap, y_overlap)
+
+print("C = 10")
+print("Number of support vectors:", len(svm_soft_10.support_vectors_))
+plot_margin(X_overlap, y_overlap, svm_soft_10, title="Soft margin plot (C = 10)")
+
+# C = 100 (very hard margin behavior)
+svm_soft_100 = SVC(kernel="linear", C=100)
+svm_soft_100.fit(X_overlap, y_overlap)
+
+print("C = 100")
+print("Number of support vectors:", len(svm_soft_100.support_vectors_))
+plot_margin(X_overlap, y_overlap, svm_soft_100, title="Soft margin plot (C = 100)")
+

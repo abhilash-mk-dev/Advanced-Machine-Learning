@@ -40,6 +40,6 @@ def plot_margin(X, y, svm, title = "Margin Plot"):
 
     plt.xlabel("Feature 1")
     plt.ylabel("Feature 2")
-    plt.title(title)
+    plt.title("Hard margie SVM with Margin Visualizatiob")
     plt.legend()
     plt.show()
